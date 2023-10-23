@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Cairo:200,300,regular,500,600,700,800,900);
+.header {
+  margin-top: -20px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 380px) {
+    margin-top: 0px;
+    padding: 5px;
+  }
+  &Left {
+    display: flex;
+    align-items: center;
+    &__logo {
+      width: 50px;
+      height: 50px;
+      transition-duration: 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.2) rotate(180deg);
+        transition-duration: 0.3s;
+      }
+    }
+    &__title {
+      margin-left: 20px;
+      font-family: Cairo;
+      font-size: 25px;
+      font-weight: bold;
+      @media (max-width: 380px) {
+        font-size: 19px;
+      }
+    }
+  }
+  &Right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &Img {
+      padding: 10px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .cartIcon {
+        color: #8a07fc;
+        font-size: 40px;
+        @media (max-width: 380px) {
+          font-size: 30px;
+        }
+      }
+      cursor: pointer;
+    }
+    &Value {
+      position: absolute;
+      bottom: -5px;
+      opacity: 0.5;
+      padding: 2px;
+      border-radius: 10px;
+      background-color: red;
+      color: white;
+      font-size: 10px;
+    }
+    transition-duration: 0.3s;
+    &:hover {
+      transform: scale(1.1);
+      transition-duration: 0.3s;
+    }
+  }
+}

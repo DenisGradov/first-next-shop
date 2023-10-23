@@ -1,0 +1,114 @@
+.product {
+  position: relative;
+  margin: 20px 50px;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 155px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  &:hover {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+  }
+  &__thumbnail {
+    width: 300px;
+    height: 100px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  &__discount {
+    opacity: 0.95;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    border: 1px solid #000;
+    font-size: 10px;
+    position: absolute;
+    top: -5px;
+    left: 7px;
+  }
+  &__cart {
+    position: absolute;
+    top: -15px;
+    right: 5px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    display: flex;
+    background-color: white;
+    &Img {
+      padding: 5px;
+      font-size: 19px;
+    }
+    opacity: 0.76;
+    transition-duration: 0.3s;
+    &:hover {
+      transform: scale(1.2);
+      transition-duration: 0.3s;
+    }
+    &Active {
+      position: absolute;
+      top: -15px;
+      right: 5px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      display: flex;
+      background-color: white;
+      color: red;
+      &Img {
+        padding: 5px;
+        font-size: 19px;
+      }
+      transition-duration: 0.3s;
+      &:hover {
+        transform: scale(1.2);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+  &__rating {
+    opacity: 1;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.699);
+    color: gold;
+    font-size: 15px;
+    position: absolute;
+    top: 145px;
+    left: 39%;
+    border: 1px solid black;
+    &Bg {
+      width: 80px;
+      height: 21px;
+      background-color: white;
+      position: absolute;
+      top: 145px;
+      left: 39%;
+      border-radius: 10px;
+    }
+  }
+  &Info {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      font-size: 15px;
+    }
+    &__price {
+      position: relative;
+      &Old {
+        position: absolute;
+        top: 16px;
+        left: 0px;
+        text-decoration: line-through;
+        color: gray;
+        font-size: 12px;
+      }
+      font-size: 15px;
+    }
+  }
+}

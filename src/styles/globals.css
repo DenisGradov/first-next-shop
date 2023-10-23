@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+body {
+  font-family: inter;
+}
+/* Для Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 3px; /* ширина вертикального скроллбара */
+  height: 3px; /* высота горизонтального скроллбара */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* фон трека */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a07fc; /* фон самого скроллбара */
+  border-radius: 5px; /* закругление углов */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* цвет при наведении */
+}
+
+/* Для Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8a07fc #f1f1f1;
+}
