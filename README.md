@@ -24,7 +24,7 @@
 
 ### При першому запуску сайту сайт робить запит за допомогою бібліотеки Axios на сервіс dummyjson ([повна адреса запиту](https://dummyjson.com/products/?limit=100)). Для отримання списку зі 100 продуктів - наприкінці запиту вказується ?limit=100. Дані з відповіді на запит передаються в 2 юзер-хуки, useDate і useHook, докладніше нижче
 
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/1.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/1.png)
 
 <a name="Юзер-хуки"></a>
 
@@ -46,15 +46,15 @@
 
 ### Також використовувався компонент ProductItem. Що б було простіше та зручніше – я виніс картку продукту в цей компонент. При рендеринг карток товару на сторінці - просто список продуктів перебирається з масиву, виводячи компонент з потрібними пропсами
 
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/2.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/3.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/4.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/5.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/6.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/7.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/8.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/9.png)
-![screen](https://github.com/DenisGradov/MyFirstShop-next.js-ts/blob/main/git-img/10.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/2.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/3.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/4.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/5.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/6.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/7.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/8.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/9.png)
+![screen](https://github.com/DenisGradov/first-next-shop/blob/main/git-img/10.png)
 <br/>
 <a name="Інші_елементи"></a>
 
@@ -86,5 +86,7 @@
 | UnstyledSelectBasic.tsx                  | MUI компонент випадаючого списку сортування                                                       |
 
 ### При використанні сайту може знадобитися [розширення](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf), якщо виникатиме помилка CORS
-#   f i r s t - n e x t - s h o p  
+
+#   f i r s t - n e x t - s h o p 
+ 
  
