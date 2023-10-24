@@ -81,15 +81,16 @@ const ProductItem: React.FC<Product> = ({
           <RiShoppingCart2Line className={styles.product__cartImg} />
         </h2>
       )}
-      <div className={styles.product__ratingBg}></div>
-      <Rating
-        className={styles.product__rating}
-        name="half-rating"
-        precision={0.1}
-        max={5}
-        value={rating}
-        readOnly
-      />
+      <div className={styles.product__ratingBg}>
+        <Rating
+          className={styles.product__ratingBgrating}
+          name="half-rating"
+          precision={0.1}
+          max={5}
+          value={rating}
+          readOnly
+        />
+      </div>
       <div className={styles.productInfo}>
         <h2 className={styles.productInfo__title}>{title}</h2>
         {discountPercentage > 0 ? (

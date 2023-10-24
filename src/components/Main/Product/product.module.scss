@@ -69,25 +69,22 @@
       }
     }
   }
-  &__rating {
+  &__ratingBg {
     position: absolute;
-    top: 145px;
+    top: 140px;
     left: 39%;
-    opacity: 1;
-    padding: 2px;
+    width: 60px;
+    height: 21px;
+    background-color: white;
     border-radius: 10px;
-    background-color: rgba(255, 0, 0, 0.699);
-    color: gold;
-    font-size: 11px;
-    border: 1px solid black;
-    &Bg {
-      position: absolute;
-      top: 145px;
-      left: 39%;
-      width: 60px;
-      height: 21px;
-      background-color: white;
+    &rating {
+      opacity: 1;
+      padding: 2px;
       border-radius: 10px;
+      background-color: rgba(255, 0, 0, 0.699);
+      color: gold;
+      font-size: 11px;
+      border: 1px solid black;
     }
   }
   &Info {
