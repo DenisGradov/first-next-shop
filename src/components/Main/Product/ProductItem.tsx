@@ -89,6 +89,9 @@ const ProductItem: React.FC<Product> = ({
           max={5}
           value={rating}
           readOnly
+          sx={{
+            fontSize: "11px",
+          }}
         />
       </div>
       <div className={styles.productInfo}>
