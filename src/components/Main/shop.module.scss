@@ -70,7 +70,8 @@
       &Input {
         text-align: center;
         z-index: 99;
-        width: 38px;
+        width: 48px;
+        font-size: 15px;
         border: 1px solid #cacaca;
       }
       &MinMax {
@@ -125,7 +126,7 @@
         margin-top: -5px;
       }
       &Rating {
-        margin-top: -22px;
+        margin-top: -8px;
       }
       &Description {
         text-align: center;
