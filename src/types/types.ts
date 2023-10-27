@@ -46,3 +46,10 @@ export interface SortHow {
       | "За рейтингом зворотньо"
   ) => void;
 }
+
+export interface FilterState {
+  brands: [boolean, Record<string, boolean>];
+  categories: [boolean, Record<string, boolean>];
+  setBrands: (value: [boolean, Record<string, boolean>]) => void;
+  setCategories: (value: [boolean, Record<string, boolean>]) => void;
+}

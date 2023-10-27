@@ -4,7 +4,9 @@
 import { RiShoppingCart2Line } from "react-icons/ri";
 import logo from "../../data/img/logo.png";
 import styles from "./header.module.scss";
-export default function Header({ cart }: any) {
+import { useProduct } from "@/states/productInfo";
+export default function Header() {
+  const cart = useProduct.getState().cart;
   return (
     <div className={styles.header}>
       <div className={styles.headerLeft}>

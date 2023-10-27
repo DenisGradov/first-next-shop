@@ -4,15 +4,23 @@ import { useProduct } from "@/states/productInfo";
 import { useSearchInput } from "@/states/searchInput";
 import { useSortHow } from "@/states/sortHow";
 import { MinMaxPriceState, Product } from "@/types/types";
-
+import { FilterState } from "@/types/types";
 const itemsOnThePage: number = 10;
 
-export default function usePagination() {
-  const filters = useFilters.getState();
-  const minMaxPrice: MinMaxPriceState = useMinMaxPrice.getState();
-  const searchInput = useSearchInput.getState();
-  const products = useProduct.getState().products;
-  const sortHow = useSortHow.getState().values;
+interface PaginationDataArgs {
+  filters: FilterState;
+  minMaxPrice: MinMaxPriceState;
+  searchInput: { values: string };
+  products: Product[];
+  sortHow: string;
+}
+export default function getPaginationData({
+  filters,
+  minMaxPrice,
+  searchInput,
+  products,
+  sortHow,
+}: PaginationDataArgs): Product[][] {
   const selectedBrands = Object.entries(filters.brands[1])
     .filter(([brand, isChecked]) => isChecked)
     .map(([brand]) => brand);

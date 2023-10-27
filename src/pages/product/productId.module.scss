@@ -1,0 +1,102 @@
+.shopItems {
+  //border: 1px solid #000;
+  overflow-x: hidden;
+  width: 80vw;
+  @media (max-width: 1118px) {
+    width: 100vw;
+    margin: 0 auto;
+  }
+  &Products {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1500px;
+    width: 80vw;
+    &Block {
+      margin-top: -10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &Items {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+  }
+  &Buttons {
+    display: flex;
+    &Block {
+      margin: 5px;
+      &Button {
+        color: white;
+        background-color: #8a07fc;
+        font-size: 15px;
+        margin: 0 15px;
+        line-height: 1.5;
+        border-radius: 8px;
+        font-weight: 600;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: all 150ms ease;
+        border: none;
+        transition-duration: 0.3s;
+
+        &:hover:not(:disabled) {
+          background-color: #9c37f5;
+          transform: scale(1.1);
+          transition-duration: 0.3s;
+        }
+
+        &:active:not(:disabled) {
+          background-color: #bb6eff;
+        }
+
+        &.buttonClasses.focusVisible {
+          box-shadow: 0 4px 20px 0 rgb(61 71 82 / 0.1),
+            0 0 0 5px rgb(0 127 255 / 0.5);
+          outline: none;
+        }
+
+        &.buttonClasses.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  &TextTitle {
+    margin-top: 35px;
+  }
+  &Text {
+    margin-top: -5px;
+  }
+  &Rating {
+    margin-top: -8px;
+  }
+  &Description {
+    text-align: center;
+    margin-top: 14px;
+  }
+  &Card {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    &List {
+      margin-top: 20px;
+      display: flex;
+      height: 200px;
+      overflow-x: auto;
+      &::-webkit-scrollbar {
+        width: 3px; // ширина вертикального скроллбара
+        height: 6px; // высота горизонтального скроллбара
+      }
+    }
+  }
+}

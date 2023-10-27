@@ -5,6 +5,7 @@ import styles from "./product.module.scss";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { Product } from "@/types/types";
 import { useProduct } from "@/states/productInfo";
+import Link from "next/link";
 interface Props {
   product: Product;
 }
@@ -22,7 +23,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
     productInfo.setAll(newProduct);
   }
   return (
-    <div className={styles.product}>
+    <Link href={`/product/${product.id}`} className={styles.product}>
       <img
         alt={`Img with thmbnail`}
         src={product.thumbnail}
@@ -81,7 +82,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
           <h2 className={styles.productInfo__price}>{product.price}$</h2>
         )}
       </div>
-    </div>
+    </Link>
   );
 };
 
