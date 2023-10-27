@@ -85,6 +85,6 @@
 | UnstyledButtonsSimple(2,3).tsx           | MUI компонент кнопок: пошук, назад, кошик                                                         |
 | UnstyledSelectBasic.tsx                  | MUI компонент випадаючого списку сортування                                                       |
 
-### Подивитися сайт ви можете тут: [сайт](https://first-next-shop-73uilr5dq-denisgradovs-projects.vercel.app)
+### Подивитися сайт ви можете тут: [сайт](https://first-next-shop-razreslaw-denisgradovs-projects.vercel.app)
 
 ### При використанні сайту може знадобитися [розширення](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf), якщо виникатиме помилка CORS

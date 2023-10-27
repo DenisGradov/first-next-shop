@@ -1,0 +1,63 @@
+<div className={styles.shopItemsCard}>
+              <div className={styles.shopItemsCardList}>
+                {viewProduct.product.images.map((img: any, index: any) => {
+                  return (
+                    <img
+                      key={index}
+                      src={img}
+                      alt={`Product image ${index + 1}`}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  );
+                })}
+              </div>
+              <h2 className={styles.shopItemsTextTitle}>
+                {viewProduct.product.title}
+              </h2>
+              <Rating
+                className={styles.shopItemsRating}
+                name="half-rating"
+                precision={0.1}
+                max={5}
+                value={viewProduct.product.rating}
+                readOnly
+              />
+              <h2 className={styles.shopItemsDescription}>
+                {viewProduct.product.description}
+              </h2>
+              <h2 className={styles.shopItemsText}>
+                Прайс:{" "}
+                {Math.floor(
+                  viewProduct.product.price -
+                    (viewProduct.product.price *
+                      viewProduct.product.discountPercentage) /
+                      100
+                )}
+                $ (знижка -{viewProduct.product.discountPercentage}%)
+              </h2>
+              <h2 className={styles.shopItemsText}>
+                Штук на складі: {viewProduct.product.stock}
+              </h2>
+              <h2 className={styles.shopItemsText}>
+                Бренд: {viewProduct.product.brand}
+              </h2>
+              <h2 className={styles.shopItemsText}>
+                Категорія: {viewProduct.product.category}
+              </h2>
+              <div className={styles.shopItemsButtons}>
+                <div className={styles.shopItemsButtonsButton}>
+                  <UnstyledButtonsSimple3 setViewProduct={setViewProduct} />
+                </div>
+                <div className={styles.shopItemsButtonsButton}>
+                  <UnstyledButtonsSimple2
+                    product={viewProduct.product}
+                    setProduct={setProduct}
+                    products={product}
+                  />
+                </div>
+              </div>
+            </div>

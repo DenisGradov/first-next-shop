@@ -1,7 +1,9 @@
+"use client";
 import * as React from "react";
 import { useInput } from "@mui/base/useInput";
 import { styled } from "@mui/system";
 import { unstable_useForkRef as useForkRef } from "@mui/utils";
+import { useSearchInput } from "@/states/searchInput";
 
 const CustomInput = React.forwardRef(function CustomInput(
   props: React.InputHTMLAttributes<HTMLInputElement>,
@@ -20,21 +22,18 @@ const CustomInput = React.forwardRef(function CustomInput(
     </div>
   );
 });
-interface InputProps {
-  searchInput: string;
-  setSearchInput: (value: string) => void;
-}
-const Input: React.FC<InputProps> = ({ searchInput, setSearchInput }) => {
+
+export default function Input() {
+  const searchInput = useSearchInput();
   return (
     <CustomInput
       aria-label="Search Input"
       placeholder="Я шукаю…"
-      value={searchInput}
-      onChange={(e) => setSearchInput(e.target.value)}
+      value={searchInput.values}
+      onChange={(e) => searchInput.setAll(e.target.value)}
     />
   );
-};
-export default Input;
+}
 
 const blue = {
   100: "#8a07fc",

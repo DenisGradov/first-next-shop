@@ -8,139 +8,59 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useData from "@/hooks/useData";
 import usePagination from "@/hooks/usePagination";
-import Shop from "@/components/Main/Shop";
-
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-interface ProductInfo {
-  products: Product[];
-  activePage: number;
-  brands: string[];
-  categories: string[];
-  productsWithPagination: Product[];
-  cart: string[];
-}
+import Shop from "@/components/Shop/Shop";
+import { Product, ProductInfo } from "@/types/types";
+import { useProduct } from "@/states/productInfo";
+import { useMinMaxPrice } from "@/states/minMaxPrice";
+import { useFilters } from "@/states/filters";
+import { useSearchInput } from "@/states/searchInput";
+import { useSortHow } from "@/states/sortHow";
+import { fetchData } from "@/api/api";
 
 export default function Home() {
-  const [product, setProduct] = useState<ProductInfo>({
-    products: [],
-    activePage: 0,
-    brands: [],
-    productsWithPagination: [],
-    categories: [],
-    cart: [],
-  }); //
-  const [minMaxPrice, setMinMaxPrice] = useState<any[]>([
-    [0, 0],
-    [0, 0],
-  ]);
-
-  const [checkBox, setCheckBox] = useState<any>([]);
-  const [searchInput, setSearchInput] = useState<any>("");
-  const [sortHow, setSortHow] = useState<any>(10);
-  const [viewProduct, setViewProduct] = useState<any>({
-    state: false,
-    product: [],
-  });
+  const product = useProduct();
+  const minMaxPrice = useMinMaxPrice();
+  const filters = useFilters();
+  const searchInput = useSearchInput();
+  const sortHow = useSortHow();
   useEffect(() => {
-    const newCheckBox: any = { brands: [], categories: [] };
-    (newCheckBox.brands = [
+    const newBrands: [boolean, Record<string, boolean>] = [
       true,
       product.brands.reduce<Record<string, boolean>>((acc, brand) => {
         acc[brand] = false;
         return acc;
       }, {}),
-    ]),
-      (newCheckBox.categories = [
-        true,
-        product.categories.reduce<Record<string, boolean>>((acc, category) => {
-          acc[category] = false;
-          return acc;
-        }, {}),
-      ]);
-    setCheckBox(newCheckBox);
+    ];
+
+    const newCategories: [boolean, Record<string, boolean>] = [
+      true,
+      product.categories.reduce<Record<string, boolean>>((acc, category) => {
+        acc[category] = false;
+        return acc;
+      }, {}),
+    ];
+    filters.setBrands(newBrands);
+    filters.setCategories(newCategories);
   }, [product.brands, product.categories]);
 
+  //Запрос к АПИ
   useEffect(() => {
-    axios
-      .get("https://dummyjson.com/products/?limit=100")
-      .then((resposne) => {
-        const data = useData(resposne.data);
-        setProduct(data);
-        const products: Product[] = data.products;
-        const newMinMaxPrice = [
-          [products[0].price, products[0].price],
-          [products[0].price, products[0].price],
-        ];
-        products.map((i: Product) => {
-          if (i.price < newMinMaxPrice[0][0]) {
-            newMinMaxPrice[0][0] = i.price;
-            newMinMaxPrice[1][0] = i.price;
-          }
-          if (i.price > newMinMaxPrice[0][1]) {
-            newMinMaxPrice[0][1] = i.price;
-            newMinMaxPrice[1][1] = i.price;
-          }
-        });
-        setMinMaxPrice(newMinMaxPrice);
-      })
-      .catch((error) => {});
+    fetchData();
   }, []);
+
   useEffect(() => {
-    if (checkBox) {
-      if (checkBox.brands) {
-        if (checkBox.brands[1]) {
-          const newProduct = { ...product };
-          newProduct.productsWithPagination = usePagination(
-            checkBox,
-            product.products,
-            minMaxPrice,
-            searchInput,
-            sortHow
-          );
-          newProduct.activePage = 0;
-          setProduct(newProduct);
-        }
-      }
+    if (filters && filters.brands && filters.brands[1]) {
+      const newProduct = { ...product };
+      newProduct.productsWithPagination = usePagination();
+      newProduct.activePage = 0;
+      product.setAll(newProduct);
     }
-  }, [checkBox, minMaxPrice, sortHow, searchInput]);
+  }, [filters, minMaxPrice, sortHow, searchInput]);
 
   return (
     <div>
       <Header cart={product.cart} />
-
-      <Shop
-        products={product.products}
-        productsWithPagination={product.productsWithPagination}
-        activePage={product.activePage}
-        brands={product.brands}
-        categories={product.categories}
-        cart={product.cart}
-        minMaxPrice={minMaxPrice}
-        setMinMaxPrice={setMinMaxPrice}
-        productt={product}
-        product={product}
-        checkBox={checkBox}
-        setCheckBox={setCheckBox}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        sortHow={sortHow}
-        setSortHow={setSortHow}
-        setProduct={setProduct}
-        viewProduct={viewProduct}
-        setViewProduct={setViewProduct}
-      />
+      <Shop />
     </div>
   );
 }

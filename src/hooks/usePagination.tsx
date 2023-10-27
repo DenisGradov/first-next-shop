@@ -1,37 +1,30 @@
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
+import { useFilters } from "@/states/filters";
+import { useMinMaxPrice } from "@/states/minMaxPrice";
+import { useProduct } from "@/states/productInfo";
+import { useSearchInput } from "@/states/searchInput";
+import { useSortHow } from "@/states/sortHow";
+import { MinMaxPriceState, Product } from "@/types/types";
 
-const itemsOnThePage: any = 10;
-export default function usePagination(
-  checkBox: any,
-  products: Product[],
-  minMaxPrice: any,
-  searchInput: string = "",
-  sortHow: number = 10
-): any {
-  const selectedBrands = Object.entries(checkBox.brands[1])
+const itemsOnThePage: number = 10;
+
+export default function usePagination() {
+  const filters = useFilters.getState();
+  const minMaxPrice: MinMaxPriceState = useMinMaxPrice.getState();
+  const searchInput = useSearchInput.getState();
+  const products = useProduct.getState().products;
+  const sortHow = useSortHow.getState().values;
+  const selectedBrands = Object.entries(filters.brands[1])
     .filter(([brand, isChecked]) => isChecked)
     .map(([brand]) => brand);
 
-  const selectedCategories = Object.entries(checkBox.categories[1])
+  const selectedCategories = Object.entries(filters.categories[1])
     .filter(([category, isChecked]) => isChecked)
     .map(([category]) => category);
 
-  const [minPrice, maxPrice] = minMaxPrice[1];
+  const [minPrice, maxPrice] = minMaxPrice.values[1];
 
   // Проверка на наличие текста перед приведением к нижнему регистру
-  const trimmedSearchInput = searchInput.trim();
+  const trimmedSearchInput = searchInput.values.trim();
   const hasSearchInput = !!trimmedSearchInput;
   const searchInputLowercased = trimmedSearchInput.toLowerCase();
 
@@ -51,16 +44,16 @@ export default function usePagination(
     return matchesBrand && matchesCategory && matchesPrice && matchesSearch;
   });
   switch (sortHow) {
-    case 20:
+    case "Від дешевих до дорогих":
       filteredProducts.sort((a, b) => a.price - b.price);
       break;
-    case 30:
+    case "Від дорогих до дешевих":
       filteredProducts.sort((a, b) => b.price - a.price);
       break;
-    case 40:
+    case "За рейтингом":
       filteredProducts.sort((a, b) => b.rating - a.rating);
       break;
-    case 50:
+    case "За рейтингом зворотньо":
       filteredProducts.sort((a, b) => a.rating - b.rating);
       break;
     default:
@@ -72,7 +65,7 @@ export default function usePagination(
     filteredProducts = products;
   }
   const productsForPagination = [];
-  let productsOnPage: any[] = [];
+  let productsOnPage: Product[] = [];
   let index = itemsOnThePage - 1;
   for (let i in filteredProducts) {
     index++;

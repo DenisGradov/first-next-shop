@@ -1,24 +1,22 @@
+"use client";
 import * as React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { useProduct } from "@/states/productInfo";
 
-interface props {
-  product: any;
-  setProduct: React.Dispatch<React.SetStateAction<any>>;
-}
-
-const PaginationOutlined: React.FC<props> = ({ product, setProduct }) => {
+export default function PaginationOutlined() {
+  const productInfo = useProduct.getState();
   function change(e: any, page: number) {
-    const newProduct = { ...product };
+    const newProduct = { ...productInfo };
     newProduct.activePage = page - 1;
-    setProduct(newProduct);
+    productInfo.setAll(newProduct);
   }
   return (
     <Stack spacing={2}>
       <Pagination
         onChange={(e, page) => change(e, page)}
-        count={product.productsWithPagination.length}
-        page={product.activePage + 1}
+        count={productInfo.productsWithPagination.length}
+        page={productInfo.activePage + 1}
         defaultValue={0}
         variant="outlined"
         color="secondary"
@@ -26,6 +24,4 @@ const PaginationOutlined: React.FC<props> = ({ product, setProduct }) => {
       />
     </Stack>
   );
-};
-
-export default PaginationOutlined;
+}

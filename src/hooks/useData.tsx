@@ -33,11 +33,11 @@ interface InfoToReturn {
   brandsCheckBox: CheckBox[];
   categories: string[];
   categoriesCheckBox: CheckBox[];
-  cart: string[];
+  cart: Product[];
 }
 const brands: string[] = [];
 const categories: string[] = [];
-const cart: string[] = [];
+const cart: Product[] = [];
 const brandsCheckBox: CheckBox[] = [];
 const categoriesCheckBox: CheckBox[] = [];
 const activePage = 0;

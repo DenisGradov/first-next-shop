@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import logo from "../../data/img/logo.png";
 import styles from "./header.module.scss";

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Accordion,
@@ -7,27 +8,11 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IndeterminateCheckbox from "./IndeterminateCheckbox";
+import { useFilters } from "@/states/filters";
 
-interface CheckBox {
-  brandName: string;
-  isChecked: boolean;
-}
-type props = {
-  brands: string[];
-  categories: string[];
-  checkBox: any;
-  product: any;
-  setCheckBox: React.Dispatch<React.SetStateAction<any>>;
-};
-
-const AccordionIndeterminateCheckboxMobile: React.FC<props> = ({
-  brands,
-  categories,
-  product,
-  checkBox,
-  setCheckBox,
-}) => {
-  if (brands.length === 0) return null;
+const AccordionIndeterminateCheckboxMobile = () => {
+  const filters = useFilters.getState();
+  if (!filters.brands) return null;
   return (
     <>
       <Accordion style={{ marginBottom: "20px", width: "200px" }}>
@@ -40,11 +25,7 @@ const AccordionIndeterminateCheckboxMobile: React.FC<props> = ({
         </AccordionSummary>
         <AccordionDetails style={{ maxHeight: "150px", overflowY: "auto" }}>
           <Typography component="span">
-            <IndeterminateCheckbox
-              id={"бренди"}
-              checkBox={checkBox}
-              setCheckBox={setCheckBox}
-            />
+            <IndeterminateCheckbox id={"бренди"} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -58,11 +39,7 @@ const AccordionIndeterminateCheckboxMobile: React.FC<props> = ({
         </AccordionSummary>
         <AccordionDetails style={{ maxHeight: "150px", overflowY: "auto" }}>
           <Typography component="span">
-            <IndeterminateCheckbox
-              id={"категорії"}
-              checkBox={checkBox}
-              setCheckBox={setCheckBox}
-            />
+            <IndeterminateCheckbox id={"категорії"} />
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Button, buttonClasses } from "@mui/base/Button";
 import { styled } from "@mui/system";

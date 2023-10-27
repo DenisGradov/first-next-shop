@@ -1,36 +1,12 @@
+"use client";
 import * as React from "react";
 import { Select, SelectProps, selectClasses } from "@mui/base/Select";
 import { Option, optionClasses } from "@mui/base/Option";
 import { Popper } from "@mui/base/Popper";
 import { styled } from "@mui/system";
+import { useSortHow } from "@/states/sortHow";
+import { SortHow } from "@/types/types";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-interface Params {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
-}
-interface ProductInfo {
-  products: Product[];
-  productsWithPagination: any[];
-  activePage: number;
-  brands: string[];
-  categories: string[];
-  cart: string[];
-}
 const CustomSelect = React.forwardRef(function CustomSelect<
   TValue extends {},
   Multiple extends boolean
@@ -49,45 +25,37 @@ const CustomSelect = React.forwardRef(function CustomSelect<
 }) as <TValue extends {}, Multiple extends boolean>(
   props: SelectProps<TValue, Multiple> & React.RefAttributes<HTMLButtonElement>
 ) => JSX.Element;
-interface InputProps {
-  sortHow: any;
-  setSortHow: React.Dispatch<React.SetStateAction<any>>;
-}
-const UnstyledSelectBasic: React.FC<InputProps> = ({ sortHow, setSortHow }) => {
+export default function UnstyledSelectBasic() {
+  const sortHow = useSortHow.getState();
   const handleChange = (e: any) => {
-    if ((e.target as HTMLElement).textContent == "Новинки") {
-      setSortHow(10);
-    } else if (
-      (e.target as HTMLElement).textContent == "Від дешевих до дорогих"
-    ) {
-      setSortHow(20);
-    } else if (
-      (e.target as HTMLElement).textContent == "Від дорогих до дешевих"
-    ) {
-      setSortHow(30);
-    } else if ((e.target as HTMLElement).textContent == "За рейтингом") {
-      setSortHow(40);
-    } else if (
-      (e.target as HTMLElement).textContent == "За рейтингом зворотньо"
-    ) {
-      setSortHow(50);
+    const content = (e.target as HTMLElement).textContent;
+
+    if (content) {
+      sortHow.setAll(content as SortHow["values"]);
+    } else {
+      sortHow.setAll("Новинки");
     }
   };
   return (
     <CustomSelect
-      value={sortHow}
+      value={sortHow.values}
       onChange={handleChange}
-      defaultValue={sortHow}
+      defaultValue={sortHow.values}
     >
-      <StyledOption value={10}>Новинки</StyledOption>
-      <StyledOption value={20}>Від дешевих до дорогих</StyledOption>
-      <StyledOption value={30}>Від дорогих до дешевих</StyledOption>
-      <StyledOption value={40}>За рейтингом</StyledOption>
-      <StyledOption value={50}>За рейтингом зворотньо</StyledOption>
+      <StyledOption value="Новинки">Новинки</StyledOption>
+      <StyledOption value="Від дешевих до дорогих">
+        Від дешевих до дорогих
+      </StyledOption>
+      <StyledOption value="Від дорогих до дешевих">
+        Від дорогих до дешевих
+      </StyledOption>
+      <StyledOption value="За рейтингом">За рейтингом</StyledOption>
+      <StyledOption value="За рейтингом зворотньо">
+        За рейтингом зворотньо
+      </StyledOption>
     </CustomSelect>
   );
-};
-export default UnstyledSelectBasic;
+}
 
 const blue = {
   100: "#DAECFF",
