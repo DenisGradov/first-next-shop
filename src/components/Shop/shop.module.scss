@@ -1,8 +1,16 @@
 .shop {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  &ItemsProducts {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
   .searchTools {
     margin: 0 auto;
     margin-top: -10px;
@@ -23,6 +31,7 @@
     }
   }
   .itemBox {
+    width: 100%;
     @media (max-width: 1118px) {
       margin-top: 120px;
     }
@@ -43,11 +52,14 @@
         width: 0px;
       }
       &Block {
-        border: 1px solid #000;
         position: absolute;
         left: 12vw;
-        top: -130px;
+        top: 140px;
       }
+    }
+    .filters {
+      margin-left: 5px;
+      margin-right: -5px;
     }
     .shopFiltersOff {
       width: 0px;
