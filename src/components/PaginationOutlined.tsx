@@ -20,7 +20,12 @@ export default function PaginationOutlined() {
         defaultValue={0}
         variant="outlined"
         color="secondary"
-        style={{ margin: "0 auto" }}
+        style={{
+          margin: "0 auto",
+          position: "absolute",
+          bottom: "5px",
+          left: "45vw",
+        }}
       />
     </Stack>
   );

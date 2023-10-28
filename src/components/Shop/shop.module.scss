@@ -1,20 +1,13 @@
 .shop {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  &ItemsProducts {
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
+  align-items: flex-start;
   .searchTools {
     margin: 0 auto;
     margin-top: -10px;
     padding: 5px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,13 +24,11 @@
     }
   }
   .itemBox {
-    max-width: 1920px;
-    width: 100%;
     @media (max-width: 1118px) {
       margin-top: 120px;
     }
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     .shopFilters,
     .shopFiltersOff {
       position: relative;
@@ -53,9 +44,11 @@
         width: 0px;
       }
       &Block {
+        border: 1px solid #000;
         position: absolute;
         left: 12vw;
-        top: 140px;
+        top: -130px;
+        margin-left: 25px;
       }
     }
     .filters {
@@ -64,6 +57,102 @@
     }
     .shopFiltersOff {
       width: 0px;
+    }
+    .priceRange {
+      margin-top: -120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &Slider {
+        width: 150px;
+        user-select: none;
+      }
+      &Iputs {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      &Input {
+        text-align: center;
+        z-index: 99;
+        width: 38px;
+        border: 1px solid #cacaca;
+      }
+      &MinMax {
+        margin-top: -76px;
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+        .priceRangeText {
+          font-size: 15px;
+        }
+        user-select: none;
+      }
+    }
+    .shopItems {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      //border: 1px solid #000;
+      overflow-x: hidden;
+      width: 100%;
+      @media (max-width: 1118px) {
+        width: 100vw;
+        margin: 0 auto;
+      }
+      &Products {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        margin-top: -10px;
+        width: 100%;
+        &Items {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-around;
+        }
+      }
+      &Buttons {
+        display: flex;
+        &Button {
+          margin: 10px;
+        }
+      }
+      &TextTitle {
+        margin-top: 35px;
+      }
+      &Text {
+        margin-top: -5px;
+      }
+      &Rating {
+        margin-top: -22px;
+      }
+      &Description {
+        text-align: center;
+        margin-top: 14px;
+      }
+      &Card {
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 1000px;
+        &List {
+          margin-top: 20px;
+          display: flex;
+          height: 200px;
+          overflow-x: auto;
+          &::-webkit-scrollbar {
+            width: 3px; // ширина вертикального скроллбара
+            height: 6px; // высота горизонтального скроллбара
+          }
+        }
+      }
     }
   }
 }
