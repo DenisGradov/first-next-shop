@@ -30,10 +30,7 @@ function SliderWithPrice() {
   };
 
   return (
-    <div
-      className={styles.priceRange}
-      style={{ zIndex: "999", height: "100px" }}
-    >
+    <div className={styles.priceRange}>
       <Slider
         valueLabelDisplay="off"
         className={styles.priceRangeSlider}
@@ -46,15 +43,13 @@ function SliderWithPrice() {
           const values = newValue as number[];
           setSelectedPriceRange(Math.floor(values[0]), Math.floor(values[1]));
         }}
-        style={{ zIndex: "999" }}
       />
       <div className={styles.priceRangeIputs}>
-        {["min", "max"].map((key) => (
+        {["min", "max"].map((minOrMax) => (
           <input
-            key={key}
-            style={{ zIndex: "999" }}
-            onChange={(e) => handleInputChange(key as "min" | "max", e)}
-            value={selectedPriceRange[key as "min" | "max"]}
+            key={minOrMax}
+            onChange={(e) => handleInputChange(minOrMax as "min" | "max", e)}
+            value={selectedPriceRange[minOrMax as "min" | "max"]}
             className={styles.priceRangeInput}
           />
         ))}

@@ -1,21 +1,25 @@
 .priceRange {
-  margin-top: -150px;
+  margin-top: -30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  height: 100px;
   &Slider {
     width: 150px;
     user-select: none;
+    z-index: 1;
   }
   &Iputs {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 1;
   }
   &Input {
     text-align: center;
-    z-index: 99;
+    z-index: 1;
     width: 48px;
     font-size: 15px;
     border: 1px solid #cacaca;

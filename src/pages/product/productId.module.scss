@@ -1,5 +1,4 @@
 .shopItems {
-  //border: 1px solid #000;
   overflow-x: hidden;
   width: 80vw;
   @media (max-width: 1118px) {
@@ -94,8 +93,8 @@
       height: 200px;
       overflow-x: auto;
       &::-webkit-scrollbar {
-        width: 3px; // ширина вертикального скроллбара
-        height: 6px; // высота горизонтального скроллбара
+        width: 3px;
+        height: 6px;
       }
     }
   }

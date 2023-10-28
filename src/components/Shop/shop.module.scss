@@ -1,4 +1,5 @@
 .shop {
+  padding-bottom: 30px;
   margin: 0 auto;
   max-width: 1920px;
   display: flex;
@@ -14,6 +15,9 @@
     justify-content: center;
     width: 100%;
     height: 50px;
+    &Item {
+      margin: 5px 0;
+    }
     @media (max-width: 750px) {
       width: 100%;
     }
@@ -47,9 +51,22 @@
       &Block {
         border: 1px solid #000;
         position: absolute;
-        left: 12vw;
-        top: 130px;
-        margin-left: 25px;
+        top: 150px;
+        &Accordion {
+          padding: 5px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          z-index: 1;
+          overflow-y: auto;
+          &Block {
+            max-height: 400px;
+            height: 300px;
+            margin: 0 auto;
+          }
+        }
       }
     }
     .filters {
@@ -76,7 +93,7 @@
       }
       &Input {
         text-align: center;
-        z-index: 99;
+        z-index: 1;
         width: 38px;
         border: 1px solid #cacaca;
       }
@@ -157,4 +174,9 @@
       }
     }
   }
+}
+
+.circularProgress {
+  position: absolute;
+  left: 50vw;
 }

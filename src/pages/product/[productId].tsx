@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import Home from "..";
 import Header from "@/components/Header/Header";
+import { Product } from "@/types/types";
 function ProductPage() {
   const router = useRouter();
   const productInfo = useProduct.getState();
@@ -19,7 +20,9 @@ function ProductPage() {
   function handlUpdateCart() {
     const newProduct = { ...productInfo };
     if (newProduct.cart.includes(product)) {
-      newProduct.cart = newProduct.cart.filter((item: any) => item !== product);
+      newProduct.cart = newProduct.cart.filter(
+        (item: Product) => item !== product
+      );
     } else {
       newProduct.cart.push(product);
     }
@@ -30,7 +33,7 @@ function ProductPage() {
       <Header />
       <div className={styles.shopItemsCard}>
         <div className={styles.shopItemsCardList}>
-          {product.images.map((img: any, index: any) => {
+          {product.images.map((img: string, index: number) => {
             return (
               <img
                 key={index}

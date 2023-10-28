@@ -1,35 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import React from "react";
 import styles from "./shop.module.scss";
-import ProductItem from "../ProductItem/ProductItem";
-import CircularProgress from "@mui/material/CircularProgress";
-import { Box, Rating } from "@mui/material";
-import { Accordion, AccordionSummary, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import UnstyledSelectBasic from "../UnstyledSelectBasic";
-import UnstyledButtonsSimple from "../UnstyledButtonsSimple";
-import AccordionIndeterminateCheckbox from "../AccordionIndeterminateCheckbox";
-import PaginationOutlined from "../PaginationOutlined";
-
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Product } from "@/types/types";
-import { useMinMaxPrice } from "@/states/minMaxPrice";
-import { useProduct } from "@/states/productInfo";
-import { useWindow } from "@/hooks/useWindow";
+import ProductItem from "../ProductItem/ProductItem";
+import UnstyledSelectBasic from "../MUIItems/UnstyledSelectBasic";
+import UnstyledButtonsSimple from "../MUIItems/UnstyledButtonsSimple";
+import AccordionIndeterminateCheckbox from "../MUIItems/AccordionIndeterminateCheckbox";
+import PaginationOutlined from "../MUIItems/PaginationOutlined";
 import SliderWithPrice from "./SliderWithPrice/SliderWithPrice";
+import { useWindow } from "@/hooks/useWindow";
+import { useSearchInput } from "@/states/searchInput";
+import { useProduct } from "@/states/productInfo";
 import { useInput } from "@mui/base/useInput";
 import { unstable_useForkRef as useForkRef } from "@mui/utils";
-
 import { styled } from "@mui/system";
-import { useSearchInput } from "@/states/searchInput";
-
-const blue = {
-  100: "#8a07fc",
-  200: "#8a07fc",
-  400: "#8a07fc",
-  500: "#8a07fc",
-  600: "#8a07fc",
-};
+import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/material";
+import { Accordion, AccordionSummary, Typography } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const grey = {
   50: "#F3F6F9",
@@ -96,7 +85,6 @@ const CustomInput = React.forwardRef(function CustomInput(
 
   const inputProps = getInputProps();
 
-  // Make sure that both the forwarded ref and the ref returned from the getInputProps are applied on the input element
   inputProps.ref = useForkRef(inputProps.ref, ref);
 
   return (
@@ -119,7 +107,7 @@ export default function Shop() {
         height="80vh"
       >
         <CircularProgress
-          style={{ position: "absolute", left: "50vw" }}
+          className={styles.circularProgress}
           color="secondary"
         />
       </Box>
@@ -133,9 +121,14 @@ export default function Shop() {
             placeholder="Я шукаю…"
             value={searchInput.values}
             onChange={(e) => searchInput.setAll(e.target.value)}
+            className={styles.searchToolsItem}
           />
-          <UnstyledButtonsSimple />
-          <UnstyledSelectBasic />
+          <div className={styles.searchToolsItem}>
+            <UnstyledButtonsSimple />
+          </div>
+          <div className={styles.searchToolsItem}>
+            <UnstyledSelectBasic />
+          </div>
         </div>
       )}
 
@@ -144,36 +137,15 @@ export default function Shop() {
           <>
             {windowSize < 1118 ? (
               <div className={styles.shopFiltersBlock}>
-                <Accordion
-                  style={{
-                    padding: "5px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    margin: "0 auto",
-                    width: "76vw",
-                    zIndex: "100",
-                    overflowY: "auto",
-                  }}
-                  className={styles.Fil}
-                >
+                <Accordion className={styles.shopFiltersBlockAccordion}>
                   <AccordionSummary
-                    style={{
-                      zIndex: "999",
-                    }}
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                   >
                     <Typography component="div">Фільтри</Typography>
                   </AccordionSummary>
-                  <div
-                    style={{
-                      maxHeight: "400px",
-                      margin: "0 auto",
-                      height: "300px",
-                    }}
-                  >
+                  <div className={styles.shopFiltersBlockAccordionBlock}>
                     <AccordionIndeterminateCheckbox />
                     <SliderWithPrice />
                   </div>
@@ -197,7 +169,7 @@ export default function Shop() {
                 height="80vh"
               >
                 <CircularProgress
-                  style={{ position: "absolute", left: "50vw" }}
+                  className={styles.circularProgress}
                   color="secondary"
                 />
               </Box>
@@ -207,7 +179,7 @@ export default function Shop() {
                 <>
                   <div className={styles.shopItemsProducts}>
                     {product.productsWithPagination.map(
-                      (productsArray, page) => {
+                      (productsArray: Product[], page: number) => {
                         if (page == product.activePage) {
                           return productsArray.map((product: Product) => {
                             return (

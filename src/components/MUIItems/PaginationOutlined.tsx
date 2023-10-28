@@ -3,10 +3,10 @@ import * as React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useProduct } from "@/states/productInfo";
-
+import styles from "./paginationOutlined.module.scss";
 export default function PaginationOutlined() {
   const productInfo = useProduct.getState();
-  function change(e: any, page: number) {
+  function change(e: React.ChangeEvent<unknown>, page: number) {
     const newProduct = { ...productInfo };
     newProduct.activePage = page - 1;
     productInfo.setAll(newProduct);
@@ -20,12 +20,7 @@ export default function PaginationOutlined() {
         defaultValue={0}
         variant="outlined"
         color="secondary"
-        style={{
-          margin: "0 auto",
-          position: "absolute",
-          bottom: "5px",
-          left: "45vw",
-        }}
+        className={styles.pagination}
       />
     </Stack>
   );

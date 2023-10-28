@@ -11,12 +11,14 @@ interface Props {
 }
 const ProductItem: React.FC<Props> = ({ product }) => {
   const productInfo = useProduct.getState();
-  function handleUpdate(e: any) {
+  function handleUpdate(e: React.MouseEvent<HTMLHeadingElement>) {
     e.preventDefault();
     const newProduct = { ...productInfo };
     console.log(newProduct);
     if (newProduct.cart.includes(product)) {
-      newProduct.cart = newProduct.cart.filter((item: any) => item !== product);
+      newProduct.cart = newProduct.cart.filter(
+        (item: Product) => item !== product
+      );
     } else {
       newProduct.cart.push(product);
     }
@@ -25,7 +27,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
   return (
     <Link href={`/product/${product.id}`} className={styles.product}>
       <img
-        alt={`Img with thmbnail`}
+        alt={`Img with thumbnail`}
         src={product.thumbnail}
         className={styles.product__thumbnail}
       />
@@ -37,7 +39,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
       {productInfo.cart.includes(product) ? (
         <h2
           className={styles.product__cartActive}
-          onClick={(e: any) => {
+          onClick={(e: React.MouseEvent<HTMLHeadingElement>) => {
             handleUpdate(e);
           }}
         >
@@ -46,7 +48,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
       ) : (
         <h2
           className={styles.product__cart}
-          onClick={(e: any) => {
+          onClick={(e: React.MouseEvent<HTMLHeadingElement>) => {
             handleUpdate(e);
           }}
         >

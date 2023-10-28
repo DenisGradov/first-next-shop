@@ -1,0 +1,8 @@
+.accordion {
+  margin-bottom: 20px;
+  width: 200px;
+  &AccordionDetails {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+}

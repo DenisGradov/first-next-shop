@@ -3,7 +3,7 @@ import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useFilters } from "@/states/filters";
-
+import styles from "./indeterminateCheckbox.module.scss";
 interface Props {
   id: "бренди" | "категорії";
 }
@@ -73,7 +73,7 @@ export default function IndeterminateCheckbox({ id }: Props) {
               />
             }
           />
-          <div style={{ marginLeft: "16px" }}>
+          <div className={styles.blockFormControlLabel}>
             {Object.entries(filters.brands[1]).map(([brand, isChecked]) => (
               <FormControlLabel
                 key={brand}
@@ -103,7 +103,7 @@ export default function IndeterminateCheckbox({ id }: Props) {
               />
             }
           />
-          <div style={{ marginLeft: "16px" }}>
+          <div className={styles.blockFormControlLabel}>
             {Object.entries(filters.categories[1]).map(
               ([category, isChecked]) => (
                 <FormControlLabel

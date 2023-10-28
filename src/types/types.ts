@@ -16,7 +16,7 @@ export interface ProductInfo {
   activePage: number;
   brands: string[];
   categories: string[];
-  productsWithPagination: Product[][];
+  productsWithPagination: any;
   cart: Product[];
   setAll: (values: Partial<ProductInfo>) => void;
 }

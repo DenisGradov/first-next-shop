@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import logo from "../../data/img/logo.png";
@@ -16,7 +15,7 @@ export default function Header() {
           src={logo.src}
           className={styles.headerLeft__logo}
         />
-        <h2 className={styles.headerLeft__title}>Stenford's Shop</h2>
+        <h2 className={styles.headerLeft__title}>{`Stenford's Shop`}</h2>
       </div>
       <div className={styles.headerRight}>
         <div className={styles.headerRightImg}>

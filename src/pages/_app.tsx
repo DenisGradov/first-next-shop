@@ -8,7 +8,6 @@ import { useSortHow } from "@/states/sortHow";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { fetchData } from "@/api/api";
-import usePagination from "@/hooks/usePagination";
 import getPaginationData from "@/hooks/usePagination";
 
 export default function App({ Component, pageProps }: AppProps) {

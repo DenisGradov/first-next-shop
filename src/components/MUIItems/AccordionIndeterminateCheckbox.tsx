@@ -9,13 +9,14 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IndeterminateCheckbox from "./IndeterminateCheckbox";
 import { useFilters } from "@/states/filters";
+import styles from "./accordionIndeterminateCheckbox.module.scss";
 
 const AccordionIndeterminateCheckbox = () => {
   const filters = useFilters.getState();
   if (!filters.brands) return null;
   return (
     <>
-      <Accordion style={{ marginBottom: "20px", width: "200px" }}>
+      <Accordion className={styles.accordion}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -23,13 +24,13 @@ const AccordionIndeterminateCheckbox = () => {
         >
           <Typography component="span">Бренди</Typography>
         </AccordionSummary>
-        <AccordionDetails style={{ maxHeight: "150px", overflowY: "auto" }}>
+        <AccordionDetails className={styles.accordionAccordionDetails}>
           <Typography component="span">
             <IndeterminateCheckbox id={"бренди"} />
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion style={{ marginBottom: "150px", width: "200px" }}>
+      <Accordion className={styles.accordion}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -37,7 +38,7 @@ const AccordionIndeterminateCheckbox = () => {
         >
           <Typography component="span">Категорії</Typography>
         </AccordionSummary>
-        <AccordionDetails style={{ maxHeight: "150px", overflowY: "auto" }}>
+        <AccordionDetails className={styles.accordionAccordionDetails}>
           <Typography component="span">
             <IndeterminateCheckbox id={"категорії"} />
           </Typography>
