@@ -22,8 +22,16 @@ export interface ProductInfo {
 }
 
 export interface MinMaxPriceState {
-  values: [number[], number[]];
-  setAll: (values: [number[], number[]]) => void;
+  productPriceRange: {
+    min: number;
+    max: number;
+  };
+  selectedPriceRange: {
+    min: number;
+    max: number;
+  };
+  setProductPriceRange: (min: number, max: number) => void;
+  setSelectedPriceRange: (min: number, max: number) => void;
 }
 export interface WindowSize {
   windowWidth: number | undefined;

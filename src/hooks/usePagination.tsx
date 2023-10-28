@@ -21,6 +21,7 @@ export default function getPaginationData({
   products,
   sortHow,
 }: PaginationDataArgs): Product[][] {
+  console.log(minMaxPrice);
   const selectedBrands = Object.entries(filters.brands[1])
     .filter(([brand, isChecked]) => isChecked)
     .map(([brand]) => brand);
@@ -29,7 +30,7 @@ export default function getPaginationData({
     .filter(([category, isChecked]) => isChecked)
     .map(([category]) => category);
 
-  const [minPrice, maxPrice] = minMaxPrice.values[1];
+  const { min: minPrice, max: maxPrice } = minMaxPrice.selectedPriceRange;
 
   // Проверка на наличие текста перед приведением к нижнему регистру
   const trimmedSearchInput = searchInput.values.trim();

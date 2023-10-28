@@ -18,6 +18,7 @@ import { Product } from "@/types/types";
 import { useMinMaxPrice } from "@/states/minMaxPrice";
 import { useProduct } from "@/states/productInfo";
 import { useWindow } from "@/hooks/useWindow";
+import SliderWithPrice from "./SliderWithPrice/SliderWithPrice";
 
 export default function Shop() {
   const minMaxPrice = useMinMaxPrice.getState();
@@ -84,163 +85,14 @@ export default function Shop() {
                     }}
                   >
                     <AccordionIndeterminateCheckbox />
-                    <div
-                      className={styles.priceRange}
-                      style={{
-                        zIndex: "999",
-                        height: "100px",
-                      }}
-                    >
-                      <Slider
-                        valueLabelDisplay="off"
-                        className={styles.priceRangeSlider}
-                        getAriaLabel={() => "Temperature range"}
-                        value={minMaxPrice.values[1]}
-                        min={minMaxPrice.values[0][0]}
-                        max={minMaxPrice.values[0][1]}
-                        step={
-                          (minMaxPrice.values[0][1] -
-                            minMaxPrice.values[0][0]) /
-                          100
-                        }
-                        onChange={(e, newValue) => {
-                          const newMinMaxPrice: [number[], number[]] = [
-                            minMaxPrice.values[0],
-                            newValue as number[],
-                          ];
-                          minMaxPrice.setAll(newMinMaxPrice);
-                        }}
-                        style={{
-                          zIndex: "999",
-                        }}
-                      />
-                      <div className={styles.priceRangeIputs}>
-                        <input
-                          style={{
-                            zIndex: "999",
-                          }}
-                          onChange={(e) => {
-                            if (typeof parseFloat(e.target.value) != "number")
-                              return;
-                            const valueFromEvent: number = parseFloat(
-                              e.target.value
-                            );
-                            if (
-                              valueFromEvent > minMaxPrice.values[0][0] &&
-                              valueFromEvent < minMaxPrice.values[0][1]
-                            ) {
-                              const newMinMaxPrice = { ...minMaxPrice };
-                              newMinMaxPrice.values[1][0] = valueFromEvent;
-                              minMaxPrice.setAll(newMinMaxPrice.values);
-                            }
-                          }}
-                          value={minMaxPrice.values[1][0]}
-                          className={styles.priceRangeInput}
-                        />
-                        <input
-                          onChange={(e) => {
-                            if (typeof parseFloat(e.target.value) != "number")
-                              return;
-                            const valueFromEvent: number = parseFloat(
-                              e.target.value
-                            );
-                            if (
-                              valueFromEvent > minMaxPrice.values[0][0] &&
-                              valueFromEvent < minMaxPrice.values[0][1]
-                            ) {
-                              const newMinMaxPrice = { ...minMaxPrice };
-                              newMinMaxPrice.values[1][0] = valueFromEvent;
-                              minMaxPrice.setAll(newMinMaxPrice.values);
-                            }
-                          }}
-                          value={minMaxPrice.values[1][1]}
-                          className={styles.priceRangeInput}
-                        />
-                      </div>
-                      <div className={styles.priceRangeMinMax}>
-                        <h2 className={styles.priceRangeText}>
-                          {minMaxPrice.values[0][0]}$
-                        </h2>
-                        <h2 className={styles.priceRangeText}>
-                          {minMaxPrice.values[0][1]}$
-                        </h2>
-                      </div>
-                    </div>
+                    <SliderWithPrice />
                   </div>
                 </Accordion>
               </div>
             ) : (
               <div className={styles.filters}>
                 <AccordionIndeterminateCheckbox />
-                <div className={styles.priceRange}>
-                  <Slider
-                    valueLabelDisplay="off"
-                    className={styles.priceRangeSlider}
-                    getAriaLabel={() => "Temperature range"}
-                    value={minMaxPrice.values[1]}
-                    min={minMaxPrice.values[0][0]}
-                    max={minMaxPrice.values[0][1]}
-                    step={
-                      (minMaxPrice.values[0][1] - minMaxPrice.values[0][0]) /
-                      100
-                    }
-                    onChange={(e, newValue) => {
-                      const newMinMaxPrice: [number[], number[]] = [
-                        minMaxPrice.values[1],
-                        newValue as number[],
-                      ];
-                      minMaxPrice.setAll(newMinMaxPrice);
-                    }}
-                  />
-                  <div className={styles.priceRangeIputs}>
-                    <input
-                      onChange={(e) => {
-                        if (typeof parseFloat(e.target.value) != "number")
-                          return;
-                        const valueFromEvent: number = parseFloat(
-                          e.target.value
-                        );
-                        if (
-                          valueFromEvent > minMaxPrice.values[0][0] &&
-                          valueFromEvent < minMaxPrice.values[0][1]
-                        ) {
-                          const newMinMaxPrice = { ...minMaxPrice };
-                          newMinMaxPrice.values[1][0] = valueFromEvent;
-                          minMaxPrice.setAll(newMinMaxPrice.values);
-                        }
-                      }}
-                      value={minMaxPrice.values[1][0]}
-                      className={styles.priceRangeInput}
-                    />
-                    <input
-                      onChange={(e) => {
-                        if (typeof parseFloat(e.target.value) != "number")
-                          return;
-                        const valueFromEvent: number = parseFloat(
-                          e.target.value
-                        );
-                        if (
-                          valueFromEvent > minMaxPrice.values[0][0] &&
-                          valueFromEvent < minMaxPrice.values[0][1]
-                        ) {
-                          const newMinMaxPrice = { ...minMaxPrice };
-                          newMinMaxPrice.values[1][1] = valueFromEvent;
-                          minMaxPrice.setAll(newMinMaxPrice.values);
-                        }
-                      }}
-                      value={minMaxPrice.values[1][1]}
-                      className={styles.priceRangeInput}
-                    />
-                  </div>
-                  <div className={styles.priceRangeMinMax}>
-                    <h2 className={styles.priceRangeText}>
-                      {minMaxPrice.values[0][0]}$
-                    </h2>
-                    <h2 className={styles.priceRangeText}>
-                      {minMaxPrice.values[0][1]}$
-                    </h2>
-                  </div>
-                </div>
+                <SliderWithPrice />
               </div>
             )}
           </>

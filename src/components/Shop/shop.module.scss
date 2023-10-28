@@ -31,12 +31,13 @@
     }
   }
   .itemBox {
+    max-width: 1920px;
     width: 100%;
     @media (max-width: 1118px) {
       margin-top: 120px;
     }
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     .shopFilters,
     .shopFiltersOff {
       position: relative;
@@ -58,44 +59,11 @@
       }
     }
     .filters {
-      margin-left: 5px;
-      margin-right: -5px;
+      margin-left: 25px;
+      margin-right: -25px;
     }
     .shopFiltersOff {
       width: 0px;
-    }
-    .priceRange {
-      margin-top: -120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      &Slider {
-        width: 150px;
-        user-select: none;
-      }
-      &Iputs {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-      &Input {
-        text-align: center;
-        z-index: 99;
-        width: 48px;
-        font-size: 15px;
-        border: 1px solid #cacaca;
-      }
-      &MinMax {
-        margin-top: -76px;
-        display: flex;
-        justify-content: space-between;
-        width: 200px;
-        .priceRangeText {
-          font-size: 15px;
-        }
-        user-select: none;
-      }
     }
   }
 }
