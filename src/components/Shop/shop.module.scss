@@ -1,8 +1,9 @@
 .shop {
+  margin: 0 auto;
+  max-width: 1920px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   .searchTools {
     margin: 0 auto;
     margin-top: -10px;
@@ -47,7 +48,7 @@
         border: 1px solid #000;
         position: absolute;
         left: 12vw;
-        top: -130px;
+        top: 130px;
         margin-left: 25px;
       }
     }
@@ -104,6 +105,7 @@
       }
       &Products {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         margin: 0 auto;
         margin-top: -10px;
@@ -148,8 +150,8 @@
           height: 200px;
           overflow-x: auto;
           &::-webkit-scrollbar {
-            width: 3px; // ширина вертикального скроллбара
-            height: 6px; // высота горизонтального скроллбара
+            width: 3px;
+            height: 6px;
           }
         }
       }

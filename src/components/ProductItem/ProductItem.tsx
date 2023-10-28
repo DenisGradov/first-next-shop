@@ -11,8 +11,8 @@ interface Props {
 }
 const ProductItem: React.FC<Props> = ({ product }) => {
   const productInfo = useProduct.getState();
-  function handUpdate(e: any) {
-    e.stopPropagation();
+  function handleUpdate(e: any) {
+    e.preventDefault();
     const newProduct = { ...productInfo };
     console.log(newProduct);
     if (newProduct.cart.includes(product)) {
@@ -38,7 +38,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
         <h2
           className={styles.product__cartActive}
           onClick={(e: any) => {
-            handUpdate(e);
+            handleUpdate(e);
           }}
         >
           <RiShoppingCart2Line className={styles.product__cartImg} />
@@ -47,7 +47,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
         <h2
           className={styles.product__cart}
           onClick={(e: any) => {
-            handUpdate(e);
+            handleUpdate(e);
           }}
         >
           <RiShoppingCart2Line className={styles.product__cartImg} />
@@ -81,6 +81,10 @@ const ProductItem: React.FC<Props> = ({ product }) => {
         ) : (
           <h2 className={styles.productInfo__price}>{product.price}$</h2>
         )}
+      </div>
+      <div className={styles.productInfo}>
+        <h2 className={styles.productInfo__otherInfo}>{product.brand}</h2>
+        <h2 className={styles.productInfo__otherInfo}>{product.category}</h2>
       </div>
     </Link>
   );

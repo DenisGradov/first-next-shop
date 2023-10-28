@@ -44,7 +44,7 @@ function SliderWithPrice() {
         step={(productPriceRange.max - productPriceRange.min) / 100}
         onChange={(e, newValue) => {
           const values = newValue as number[];
-          setSelectedPriceRange(values[0], values[1]);
+          setSelectedPriceRange(Math.floor(values[0]), Math.floor(values[1]));
         }}
         style={{ zIndex: "999" }}
       />
